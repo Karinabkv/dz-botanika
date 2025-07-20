@@ -1,0 +1,187 @@
+
+/* === ОБЩИЙ СТИЛЬ СТРАНИЦЫ === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h2 {
+  color: #1b4332;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+}
+
+/* === БЛОК ВОПРОСА === */
+.question {
+  margin-bottom: 25px;
+  padding: 25px 20px 20px 40px;
+  border-left: 6px solid #40916c;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.question::before {
+  content: "Q" attr(data-q);
+  font-weight: bold;
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background-color: #52b788;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Чередование цвета для четных вопросов */
+.question:nth-child(even) {
+  background-color: #f1fdf4;
+}
+
+/* === ТАБЛИЦА ВНУТРИ ВОПРОСА === */
+.question table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.question th,
+.question td {
+  border: 1px solid #adb5bd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* === КНОПКА === */
+.submit-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #2d6a4f;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1b4332;
+}
+
+/* === ПОДСВЕТКА ОТВЕТОВ === */
+.correct {
+  border-left-color: #38b000;
+  background-color: #d8f3dc;
+}
+
+.incorrect {
+  border-left-color: #e63946;
+  background-color: #ffe3e3;
+}
+
+/* === INPUTЫ, SELECTЫ, TEXTAREA === */
+input,
+select,
+textarea {
+  transition: all 0.3s ease;
+}
+
+select {
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+input[type="radio"]:hover,
+input[type="checkbox"]:hover {
+  outline: 2px solid #95d5b2;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* === ТЁМНАЯ ТЕМА === */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode .question {
+  background-color: #1e1e1e;
+  border-left-color: #52b788;
+}
+
+body.dark-mode .submit-btn {
+  background-color: #40916c;
+  color: #fff;
+}
+
+body.dark-mode .submit-btn:hover {
+  background-color: #95d5b2;
+  color: #000;
+}
+
+body.dark-mode .question.correct {
+  background-color: #2d6a4f;
+}
+
+body.dark-mode .question.incorrect {
+  background-color: #6a040f;
+}
+
+/* === АНИМАЦИЯ === */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.question:hover {
+  box-shadow: 0 0 8px rgba(82, 183, 136, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
